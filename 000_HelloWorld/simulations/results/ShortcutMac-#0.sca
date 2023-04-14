@@ -1,0 +1,1076 @@
+version 3
+run ShortcutMac-0-20230413-21:51:58-25250
+attr configname ShortcutMac
+attr datetime 20230413-21:51:58
+attr datetimef 20230413-215158
+attr experiment ShortcutMac
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network trafficGenerator
+attr processid 25250
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config *.*.wlan[*].typename ShortcutInterface
+config *.*.wlan[*].mac.bitrate 1Mbps
+config *.*.wlan[*].mac.lengthOverhead 1b
+config *.*.wlan[*].mac.durationOverhead 10us
+config *.*.wlan[*].mac.propagationDelay "uniform(1ms, 10ms)"
+config *.*.wlan[*].mac.packetLoss 0.1
+config **.server.numApps 1
+config **.server.app[0].typename TcpSessionApp
+config **.server.app[0].connectAddress "\"server\""
+config network trafficGenerator
+config sim-time-limit 700s
+config **.client.numApps 1
+config **.client.app[0].typename TcpSessionApp
+config **.client.app[0].connectAddress "\"server\""
+config **.client.app[0].sendBytes 1Mb
+config *.client.numApps 1
+config *.client.app[*].typename PingApp
+config *.client.app[*].destAddr "\"server\""
+config *.client.app[*].printPing true
+
+par trafficGenerator.client.radioIn[0].channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.mobility typename "\"inet.mobility.static.StationaryMobility\""
+par trafficGenerator.client.mobility subjectModule "\"^\""
+par trafficGenerator.client.mobility coordinateSystemModule "\"\""
+par trafficGenerator.client.mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par trafficGenerator.client.mobility updateDisplayString true
+par trafficGenerator.client.mobility constraintAreaMinX "-inf m"
+attr unit m
+par trafficGenerator.client.mobility constraintAreaMinY "-inf m"
+attr unit m
+par trafficGenerator.client.mobility constraintAreaMinZ "-inf m"
+attr unit m
+par trafficGenerator.client.mobility constraintAreaMaxX "inf m"
+attr unit m
+par trafficGenerator.client.mobility constraintAreaMaxY "inf m"
+attr unit m
+par trafficGenerator.client.mobility constraintAreaMaxZ "inf m"
+attr unit m
+par trafficGenerator.client.mobility initialX "nan m"
+attr unit m
+par trafficGenerator.client.mobility initialY "nan m"
+attr unit m
+par trafficGenerator.client.mobility initialZ 0m
+attr unit m
+par trafficGenerator.client.mobility initialLatitude "nan deg"
+attr unit deg
+par trafficGenerator.client.mobility initialLongitude "nan deg"
+attr unit deg
+par trafficGenerator.client.mobility initialAltitude 0m
+attr unit m
+par trafficGenerator.client.mobility initialHeading 0deg
+attr unit deg
+par trafficGenerator.client.mobility initialElevation 0deg
+attr unit deg
+par trafficGenerator.client.mobility initialBank 0deg
+attr unit deg
+par trafficGenerator.client.mobility initFromDisplayString true
+par trafficGenerator.client.mobility updateFromDisplayString true
+par trafficGenerator.client.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par trafficGenerator.client.interfaceTable displayAddresses false
+par trafficGenerator.client.cb typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.cb forwardServiceRegistration true
+par trafficGenerator.client.cb forwardProtocolRegistration true
+par trafficGenerator.client.bl typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.bl forwardServiceRegistration true
+par trafficGenerator.client.bl forwardProtocolRegistration true
+par trafficGenerator.client.li typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.li displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.li forwardServiceRegistration true
+par trafficGenerator.client.li forwardProtocolRegistration true
+par trafficGenerator.client.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par trafficGenerator.client.lo[0].lo interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.lo[0].lo mtu 4470B
+attr unit B
+scalar trafficGenerator.client.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar trafficGenerator.client.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar trafficGenerator.client.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar trafficGenerator.client.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par trafficGenerator.client.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par trafficGenerator.client.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par trafficGenerator.client.lo[0] recordPcap false
+par trafficGenerator.client.lo[0] numPcapRecorders 0
+par trafficGenerator.client.lo[0] interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+scalar trafficGenerator.client.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar trafficGenerator.client.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar trafficGenerator.client.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar trafficGenerator.client.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par trafficGenerator.client.wlan[0].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.wlan[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.wlan[0].mac typename "\"inet.linklayer.shortcut.ShortcutMac\""
+par trafficGenerator.client.wlan[0].mac interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.wlan[0].mac address "\"auto\""
+attr mutable ""
+par trafficGenerator.client.wlan[0].mac bitrate 1e+06bps
+attr unit bps
+par trafficGenerator.client.wlan[0].mac mtu 1500B
+attr unit B
+par trafficGenerator.client.wlan[0].mac lengthOverhead 1b
+attr unit b
+par trafficGenerator.client.wlan[0].mac durationOverhead 1e-05s
+attr unit s
+par trafficGenerator.client.wlan[0].mac propagationDelay "uniform(1ms, 10ms)"
+attr unit s
+par trafficGenerator.client.wlan[0].mac packetLoss 0.1
+par trafficGenerator.client.wlan[0] typename "\"inet.linklayer.shortcut.ShortcutInterface\""
+par trafficGenerator.client.wlan[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par trafficGenerator.client.wlan[0] recordPcap false
+par trafficGenerator.client.wlan[0] numPcapRecorders 0
+par trafficGenerator.client.wlan[0] interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.wlan[0] energySourceModule "\"\""
+par trafficGenerator.client.wlan[0] protocol "\"\""
+scalar trafficGenerator.client.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar trafficGenerator.client.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar trafficGenerator.client.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar trafficGenerator.client.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par trafficGenerator.client.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.client.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par trafficGenerator.client.ipv4.configurator interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.ipv4.configurator routingTableModule "\"trafficGenerator.client.ipv4.routingTable\""
+par trafficGenerator.client.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par trafficGenerator.client.ipv4.configurator configureRoutingTable true
+par trafficGenerator.client.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par trafficGenerator.client.ipv4.routingTable interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.ipv4.routingTable routerId "\"auto\""
+par trafficGenerator.client.ipv4.routingTable netmaskRoutes "\"*\""
+par trafficGenerator.client.ipv4.routingTable forwarding false
+par trafficGenerator.client.ipv4.routingTable multicastForwarding false
+par trafficGenerator.client.ipv4.routingTable useAdminDist false
+par trafficGenerator.client.ipv4.routingTable routingFile "\"\""
+par trafficGenerator.client.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par trafficGenerator.client.ipv4.natTable networkProtocolModule "\"^.ip\""
+par trafficGenerator.client.ipv4.natTable config "<config/> at content:1"
+par trafficGenerator.client.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.ipv4.up forwardServiceRegistration true
+par trafficGenerator.client.ipv4.up forwardProtocolRegistration true
+par trafficGenerator.client.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par trafficGenerator.client.ipv4.igmp interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.ipv4.igmp routingTableModule "\"trafficGenerator.client.ipv4.routingTable\""
+par trafficGenerator.client.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par trafficGenerator.client.ipv4.igmp enabled true
+par trafficGenerator.client.ipv4.igmp robustnessVariable 2
+par trafficGenerator.client.ipv4.igmp queryInterval 125s
+attr unit s
+par trafficGenerator.client.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par trafficGenerator.client.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par trafficGenerator.client.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par trafficGenerator.client.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par trafficGenerator.client.ipv4.igmp startupQueryCount 2
+par trafficGenerator.client.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par trafficGenerator.client.ipv4.igmp lastMemberQueryCount 2
+par trafficGenerator.client.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par trafficGenerator.client.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par trafficGenerator.client.ipv4.icmp interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.ipv4.icmp routingTableModule "\"trafficGenerator.client.ipv4.routingTable\""
+par trafficGenerator.client.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par trafficGenerator.client.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par trafficGenerator.client.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.ipv4.mp forwardServiceRegistration true
+par trafficGenerator.client.ipv4.mp forwardProtocolRegistration true
+par trafficGenerator.client.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par trafficGenerator.client.ipv4.ip interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.ipv4.ip routingTableModule "\"trafficGenerator.client.ipv4.routingTable\""
+par trafficGenerator.client.ipv4.ip arpModule "\"trafficGenerator.client.ipv4.arp\""
+par trafficGenerator.client.ipv4.ip icmpModule "\"trafficGenerator.client.ipv4.icmp\""
+par trafficGenerator.client.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par trafficGenerator.client.ipv4.ip timeToLive 32
+par trafficGenerator.client.ipv4.ip multicastTimeToLive 32
+par trafficGenerator.client.ipv4.ip fragmentTimeout 60s
+attr unit s
+par trafficGenerator.client.ipv4.ip limitedBroadcast false
+par trafficGenerator.client.ipv4.ip directBroadcastInterfaces "\"\""
+scalar trafficGenerator.client.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar trafficGenerator.client.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar trafficGenerator.client.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar trafficGenerator.client.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar trafficGenerator.client.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar trafficGenerator.client.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar trafficGenerator.client.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar trafficGenerator.client.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar trafficGenerator.client.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar trafficGenerator.client.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar trafficGenerator.client.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar trafficGenerator.client.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par trafficGenerator.client.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par trafficGenerator.client.ipv4.arp interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.ipv4.arp routingTableModule "\"trafficGenerator.client.ipv4.routingTable\""
+par trafficGenerator.client.ipv4.arp retryTimeout 1s
+attr unit s
+par trafficGenerator.client.ipv4.arp retryCount 3
+par trafficGenerator.client.ipv4.arp cacheTimeout 120s
+attr unit s
+par trafficGenerator.client.ipv4.arp proxyArpInterfaces "\"\""
+scalar trafficGenerator.client.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar trafficGenerator.client.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar trafficGenerator.client.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar trafficGenerator.client.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar trafficGenerator.client.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar trafficGenerator.client.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar trafficGenerator.client.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par trafficGenerator.client.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.ipv4.lp forwardServiceRegistration true
+par trafficGenerator.client.ipv4.lp forwardProtocolRegistration true
+par trafficGenerator.client.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par trafficGenerator.client.ipv4 forwarding false
+par trafficGenerator.client.ipv4 multicastForwarding false
+par trafficGenerator.client.ipv4 interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.ipv4 displayStringTextFormat "\"%i\""
+par trafficGenerator.client.nl typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.nl forwardServiceRegistration true
+par trafficGenerator.client.nl forwardProtocolRegistration true
+par trafficGenerator.client.udp typename "\"inet.transportlayer.udp.Udp\""
+par trafficGenerator.client.udp interfaceTableModule "\"trafficGenerator.client.interfaceTable\""
+par trafficGenerator.client.udp icmpModule "\"^.ipv4.icmp\""
+par trafficGenerator.client.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par trafficGenerator.client.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par trafficGenerator.client.udp defaultMulticastLoop true
+scalar trafficGenerator.client.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar trafficGenerator.client.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar trafficGenerator.client.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar trafficGenerator.client.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar trafficGenerator.client.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar trafficGenerator.client.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar trafficGenerator.client.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par trafficGenerator.client.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par trafficGenerator.client.tcp crcMode "\"declared\""
+attr enum declared,computed
+par trafficGenerator.client.tcp advertisedWindow 7504
+par trafficGenerator.client.tcp delayedAcksEnabled false
+par trafficGenerator.client.tcp nagleEnabled true
+par trafficGenerator.client.tcp limitedTransmitEnabled false
+par trafficGenerator.client.tcp increasedIWEnabled false
+par trafficGenerator.client.tcp sackSupport false
+par trafficGenerator.client.tcp windowScalingSupport false
+par trafficGenerator.client.tcp windowScalingFactor -1
+par trafficGenerator.client.tcp timestampSupport false
+par trafficGenerator.client.tcp mss 536
+par trafficGenerator.client.tcp msl 120s
+attr unit s
+par trafficGenerator.client.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par trafficGenerator.client.tcp useDataNotification false
+par trafficGenerator.client.tcp dupthresh 3
+par trafficGenerator.client.tcp initialSsthresh 4294967295
+par trafficGenerator.client.tcp stopOperationExtraTime 0s
+attr unit s
+par trafficGenerator.client.tcp stopOperationTimeout 2s
+attr unit s
+par trafficGenerator.client.tcp ecnWillingness false
+par trafficGenerator.client.tcp dctcpGamma 0.0625
+par trafficGenerator.client.tn typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.tn forwardServiceRegistration true
+par trafficGenerator.client.tn forwardProtocolRegistration true
+par trafficGenerator.client.app[0] typename "\"inet.applications.tcpapp.TcpSessionApp\""
+par trafficGenerator.client.app[0] localAddress "\"\""
+par trafficGenerator.client.app[0] localPort -1
+par trafficGenerator.client.app[0] active true
+par trafficGenerator.client.app[0] connectAddress "\"server\""
+par trafficGenerator.client.app[0] connectPort 1000
+par trafficGenerator.client.app[0] dataTransferMode "\"bytecount\""
+attr enum bytecount,object,bytestream
+par trafficGenerator.client.app[0] tOpen 1s
+attr unit s
+par trafficGenerator.client.app[0] tSend 1s
+attr unit s
+par trafficGenerator.client.app[0] sendBytes 125000B
+attr unit B
+par trafficGenerator.client.app[0] sendScript "\"\""
+par trafficGenerator.client.app[0] tClose 2s
+attr unit s
+par trafficGenerator.client.app[0] timeToLive -1
+par trafficGenerator.client.app[0] dscp -1
+par trafficGenerator.client.app[0] tos -1
+par trafficGenerator.client.app[0] stopOperationExtraTime -1s
+attr unit s
+par trafficGenerator.client.app[0] stopOperationTimeout 2s
+attr unit s
+scalar trafficGenerator.client.app[0] bytesRcvd 0
+scalar trafficGenerator.client.app[0] bytesSent 0
+scalar trafficGenerator.client.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar trafficGenerator.client.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic trafficGenerator.client.app[0] endToEndDelay:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic trafficGenerator.client.app[0] endToEndDelay:weightedHistogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field weights 0
+field weightedSum 0
+field sqrSumWeights 0
+field weightedSqrSum 0
+attr interpolationmode none
+attr recordingmode weightedHistogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, weightedHistogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar trafficGenerator.client.app[0] packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar trafficGenerator.client.app[0] packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+par trafficGenerator.client.at typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.client.at displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.client.at forwardServiceRegistration true
+par trafficGenerator.client.at forwardProtocolRegistration true
+par trafficGenerator.client typename "\"inet.node.inet.WirelessHost\""
+par trafficGenerator.client hasStatus false
+par trafficGenerator.client osgModel "\"\""
+par trafficGenerator.client osgModelColor "\"\""
+par trafficGenerator.client canvasImage "\"\""
+par trafficGenerator.client canvasImageColor "\"\""
+par trafficGenerator.client recordPcap false
+par trafficGenerator.client numPcapRecorders 0
+par trafficGenerator.client numLoInterfaces 1
+par trafficGenerator.client numWlanInterfaces 1
+par trafficGenerator.client numEthInterfaces 0
+par trafficGenerator.client numPppInterfaces 0
+par trafficGenerator.client numTunInterfaces 0
+par trafficGenerator.client numVirtInterfaces 0
+par trafficGenerator.client fcsMode "\"declared\""
+attr enum declared,computed
+par trafficGenerator.client hasIpv4 true
+par trafficGenerator.client hasIpv6 false
+par trafficGenerator.client hasGn false
+par trafficGenerator.client forwarding false
+par trafficGenerator.client multicastForwarding false
+par trafficGenerator.client hasUdp true
+par trafficGenerator.client hasTcp true
+par trafficGenerator.client hasSctp false
+par trafficGenerator.client numApps 1
+par trafficGenerator.server.radioIn[0].channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.mobility typename "\"inet.mobility.static.StationaryMobility\""
+par trafficGenerator.server.mobility subjectModule "\"^\""
+par trafficGenerator.server.mobility coordinateSystemModule "\"\""
+par trafficGenerator.server.mobility displayStringTextFormat "\"p: %p\\nv: %v\""
+attr mutable ""
+par trafficGenerator.server.mobility updateDisplayString true
+par trafficGenerator.server.mobility constraintAreaMinX "-inf m"
+attr unit m
+par trafficGenerator.server.mobility constraintAreaMinY "-inf m"
+attr unit m
+par trafficGenerator.server.mobility constraintAreaMinZ "-inf m"
+attr unit m
+par trafficGenerator.server.mobility constraintAreaMaxX "inf m"
+attr unit m
+par trafficGenerator.server.mobility constraintAreaMaxY "inf m"
+attr unit m
+par trafficGenerator.server.mobility constraintAreaMaxZ "inf m"
+attr unit m
+par trafficGenerator.server.mobility initialX "nan m"
+attr unit m
+par trafficGenerator.server.mobility initialY "nan m"
+attr unit m
+par trafficGenerator.server.mobility initialZ 0m
+attr unit m
+par trafficGenerator.server.mobility initialLatitude "nan deg"
+attr unit deg
+par trafficGenerator.server.mobility initialLongitude "nan deg"
+attr unit deg
+par trafficGenerator.server.mobility initialAltitude 0m
+attr unit m
+par trafficGenerator.server.mobility initialHeading 0deg
+attr unit deg
+par trafficGenerator.server.mobility initialElevation 0deg
+attr unit deg
+par trafficGenerator.server.mobility initialBank 0deg
+attr unit deg
+par trafficGenerator.server.mobility initFromDisplayString true
+par trafficGenerator.server.mobility updateFromDisplayString true
+par trafficGenerator.server.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par trafficGenerator.server.interfaceTable displayAddresses false
+par trafficGenerator.server.cb typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.cb forwardServiceRegistration true
+par trafficGenerator.server.cb forwardProtocolRegistration true
+par trafficGenerator.server.bl typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.bl forwardServiceRegistration true
+par trafficGenerator.server.bl forwardProtocolRegistration true
+par trafficGenerator.server.li typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.li displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.li forwardServiceRegistration true
+par trafficGenerator.server.li forwardProtocolRegistration true
+par trafficGenerator.server.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par trafficGenerator.server.lo[0].lo interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.lo[0].lo mtu 4470B
+attr unit B
+scalar trafficGenerator.server.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar trafficGenerator.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar trafficGenerator.server.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar trafficGenerator.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par trafficGenerator.server.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par trafficGenerator.server.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par trafficGenerator.server.lo[0] recordPcap false
+par trafficGenerator.server.lo[0] numPcapRecorders 0
+par trafficGenerator.server.lo[0] interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+scalar trafficGenerator.server.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar trafficGenerator.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar trafficGenerator.server.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar trafficGenerator.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par trafficGenerator.server.wlan[0].mac.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.wlan[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.wlan[0].mac typename "\"inet.linklayer.shortcut.ShortcutMac\""
+par trafficGenerator.server.wlan[0].mac interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.wlan[0].mac address "\"auto\""
+attr mutable ""
+par trafficGenerator.server.wlan[0].mac bitrate 1e+06bps
+attr unit bps
+par trafficGenerator.server.wlan[0].mac mtu 1500B
+attr unit B
+par trafficGenerator.server.wlan[0].mac lengthOverhead 1b
+attr unit b
+par trafficGenerator.server.wlan[0].mac durationOverhead 1e-05s
+attr unit s
+par trafficGenerator.server.wlan[0].mac propagationDelay "uniform(1ms, 10ms)"
+attr unit s
+par trafficGenerator.server.wlan[0].mac packetLoss 0.1
+par trafficGenerator.server.wlan[0] typename "\"inet.linklayer.shortcut.ShortcutInterface\""
+par trafficGenerator.server.wlan[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par trafficGenerator.server.wlan[0] recordPcap false
+par trafficGenerator.server.wlan[0] numPcapRecorders 0
+par trafficGenerator.server.wlan[0] interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.wlan[0] energySourceModule "\"\""
+par trafficGenerator.server.wlan[0] protocol "\"\""
+scalar trafficGenerator.server.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar trafficGenerator.server.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar trafficGenerator.server.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar trafficGenerator.server.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par trafficGenerator.server.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par trafficGenerator.server.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par trafficGenerator.server.ipv4.configurator interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.ipv4.configurator routingTableModule "\"trafficGenerator.server.ipv4.routingTable\""
+par trafficGenerator.server.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par trafficGenerator.server.ipv4.configurator configureRoutingTable true
+par trafficGenerator.server.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par trafficGenerator.server.ipv4.routingTable interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.ipv4.routingTable routerId "\"auto\""
+par trafficGenerator.server.ipv4.routingTable netmaskRoutes "\"*\""
+par trafficGenerator.server.ipv4.routingTable forwarding false
+par trafficGenerator.server.ipv4.routingTable multicastForwarding false
+par trafficGenerator.server.ipv4.routingTable useAdminDist false
+par trafficGenerator.server.ipv4.routingTable routingFile "\"\""
+par trafficGenerator.server.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par trafficGenerator.server.ipv4.natTable networkProtocolModule "\"^.ip\""
+par trafficGenerator.server.ipv4.natTable config "<config/> at content:1"
+par trafficGenerator.server.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.ipv4.up forwardServiceRegistration true
+par trafficGenerator.server.ipv4.up forwardProtocolRegistration true
+par trafficGenerator.server.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par trafficGenerator.server.ipv4.igmp interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.ipv4.igmp routingTableModule "\"trafficGenerator.server.ipv4.routingTable\""
+par trafficGenerator.server.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par trafficGenerator.server.ipv4.igmp enabled true
+par trafficGenerator.server.ipv4.igmp robustnessVariable 2
+par trafficGenerator.server.ipv4.igmp queryInterval 125s
+attr unit s
+par trafficGenerator.server.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par trafficGenerator.server.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par trafficGenerator.server.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par trafficGenerator.server.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par trafficGenerator.server.ipv4.igmp startupQueryCount 2
+par trafficGenerator.server.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par trafficGenerator.server.ipv4.igmp lastMemberQueryCount 2
+par trafficGenerator.server.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par trafficGenerator.server.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par trafficGenerator.server.ipv4.icmp interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.ipv4.icmp routingTableModule "\"trafficGenerator.server.ipv4.routingTable\""
+par trafficGenerator.server.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par trafficGenerator.server.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par trafficGenerator.server.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.ipv4.mp forwardServiceRegistration true
+par trafficGenerator.server.ipv4.mp forwardProtocolRegistration true
+par trafficGenerator.server.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par trafficGenerator.server.ipv4.ip interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.ipv4.ip routingTableModule "\"trafficGenerator.server.ipv4.routingTable\""
+par trafficGenerator.server.ipv4.ip arpModule "\"trafficGenerator.server.ipv4.arp\""
+par trafficGenerator.server.ipv4.ip icmpModule "\"trafficGenerator.server.ipv4.icmp\""
+par trafficGenerator.server.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par trafficGenerator.server.ipv4.ip timeToLive 32
+par trafficGenerator.server.ipv4.ip multicastTimeToLive 32
+par trafficGenerator.server.ipv4.ip fragmentTimeout 60s
+attr unit s
+par trafficGenerator.server.ipv4.ip limitedBroadcast false
+par trafficGenerator.server.ipv4.ip directBroadcastInterfaces "\"\""
+scalar trafficGenerator.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar trafficGenerator.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar trafficGenerator.server.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar trafficGenerator.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar trafficGenerator.server.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar trafficGenerator.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar trafficGenerator.server.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar trafficGenerator.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar trafficGenerator.server.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar trafficGenerator.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar trafficGenerator.server.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar trafficGenerator.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par trafficGenerator.server.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par trafficGenerator.server.ipv4.arp interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.ipv4.arp routingTableModule "\"trafficGenerator.server.ipv4.routingTable\""
+par trafficGenerator.server.ipv4.arp retryTimeout 1s
+attr unit s
+par trafficGenerator.server.ipv4.arp retryCount 3
+par trafficGenerator.server.ipv4.arp cacheTimeout 120s
+attr unit s
+par trafficGenerator.server.ipv4.arp proxyArpInterfaces "\"\""
+scalar trafficGenerator.server.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar trafficGenerator.server.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar trafficGenerator.server.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar trafficGenerator.server.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar trafficGenerator.server.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar trafficGenerator.server.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar trafficGenerator.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par trafficGenerator.server.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.ipv4.lp forwardServiceRegistration true
+par trafficGenerator.server.ipv4.lp forwardProtocolRegistration true
+par trafficGenerator.server.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par trafficGenerator.server.ipv4 forwarding false
+par trafficGenerator.server.ipv4 multicastForwarding false
+par trafficGenerator.server.ipv4 interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.ipv4 displayStringTextFormat "\"%i\""
+par trafficGenerator.server.nl typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.nl forwardServiceRegistration true
+par trafficGenerator.server.nl forwardProtocolRegistration true
+par trafficGenerator.server.udp typename "\"inet.transportlayer.udp.Udp\""
+par trafficGenerator.server.udp interfaceTableModule "\"trafficGenerator.server.interfaceTable\""
+par trafficGenerator.server.udp icmpModule "\"^.ipv4.icmp\""
+par trafficGenerator.server.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par trafficGenerator.server.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par trafficGenerator.server.udp defaultMulticastLoop true
+scalar trafficGenerator.server.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar trafficGenerator.server.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar trafficGenerator.server.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar trafficGenerator.server.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar trafficGenerator.server.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar trafficGenerator.server.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar trafficGenerator.server.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par trafficGenerator.server.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par trafficGenerator.server.tcp crcMode "\"declared\""
+attr enum declared,computed
+par trafficGenerator.server.tcp advertisedWindow 7504
+par trafficGenerator.server.tcp delayedAcksEnabled false
+par trafficGenerator.server.tcp nagleEnabled true
+par trafficGenerator.server.tcp limitedTransmitEnabled false
+par trafficGenerator.server.tcp increasedIWEnabled false
+par trafficGenerator.server.tcp sackSupport false
+par trafficGenerator.server.tcp windowScalingSupport false
+par trafficGenerator.server.tcp windowScalingFactor -1
+par trafficGenerator.server.tcp timestampSupport false
+par trafficGenerator.server.tcp mss 536
+par trafficGenerator.server.tcp msl 120s
+attr unit s
+par trafficGenerator.server.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par trafficGenerator.server.tcp useDataNotification false
+par trafficGenerator.server.tcp dupthresh 3
+par trafficGenerator.server.tcp initialSsthresh 4294967295
+par trafficGenerator.server.tcp stopOperationExtraTime 0s
+attr unit s
+par trafficGenerator.server.tcp stopOperationTimeout 2s
+attr unit s
+par trafficGenerator.server.tcp ecnWillingness false
+par trafficGenerator.server.tcp dctcpGamma 0.0625
+par trafficGenerator.server.tn typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.tn forwardServiceRegistration true
+par trafficGenerator.server.tn forwardProtocolRegistration true
+par trafficGenerator.server.app[0] typename "\"inet.applications.tcpapp.TcpSessionApp\""
+par trafficGenerator.server.app[0] localAddress "\"\""
+par trafficGenerator.server.app[0] localPort -1
+par trafficGenerator.server.app[0] active true
+par trafficGenerator.server.app[0] connectAddress "\"server\""
+par trafficGenerator.server.app[0] connectPort 1000
+par trafficGenerator.server.app[0] dataTransferMode "\"bytecount\""
+attr enum bytecount,object,bytestream
+par trafficGenerator.server.app[0] tOpen 1s
+attr unit s
+par trafficGenerator.server.app[0] tSend 1s
+attr unit s
+par trafficGenerator.server.app[0] sendBytes 1048576B
+attr unit B
+par trafficGenerator.server.app[0] sendScript "\"\""
+par trafficGenerator.server.app[0] tClose 2s
+attr unit s
+par trafficGenerator.server.app[0] timeToLive -1
+par trafficGenerator.server.app[0] dscp -1
+par trafficGenerator.server.app[0] tos -1
+par trafficGenerator.server.app[0] stopOperationExtraTime -1s
+attr unit s
+par trafficGenerator.server.app[0] stopOperationTimeout 2s
+attr unit s
+scalar trafficGenerator.server.app[0] bytesRcvd 0
+scalar trafficGenerator.server.app[0] bytesSent 0
+scalar trafficGenerator.server.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar trafficGenerator.server.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic trafficGenerator.server.app[0] endToEndDelay:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic trafficGenerator.server.app[0] endToEndDelay:weightedHistogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field weights 0
+field weightedSum 0
+field sqrSumWeights 0
+field weightedSqrSum 0
+attr interpolationmode none
+attr recordingmode weightedHistogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, weightedHistogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar trafficGenerator.server.app[0] packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar trafficGenerator.server.app[0] packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+par trafficGenerator.server.at typename "\"inet.common.MessageDispatcher\""
+par trafficGenerator.server.at displayStringTextFormat "\"processed %p pk (%l)\""
+par trafficGenerator.server.at forwardServiceRegistration true
+par trafficGenerator.server.at forwardProtocolRegistration true
+par trafficGenerator.server typename "\"inet.node.inet.WirelessHost\""
+par trafficGenerator.server hasStatus false
+par trafficGenerator.server osgModel "\"\""
+par trafficGenerator.server osgModelColor "\"\""
+par trafficGenerator.server canvasImage "\"\""
+par trafficGenerator.server canvasImageColor "\"\""
+par trafficGenerator.server recordPcap false
+par trafficGenerator.server numPcapRecorders 0
+par trafficGenerator.server numLoInterfaces 1
+par trafficGenerator.server numWlanInterfaces 1
+par trafficGenerator.server numEthInterfaces 0
+par trafficGenerator.server numPppInterfaces 0
+par trafficGenerator.server numTunInterfaces 0
+par trafficGenerator.server numVirtInterfaces 0
+par trafficGenerator.server fcsMode "\"declared\""
+attr enum declared,computed
+par trafficGenerator.server hasIpv4 true
+par trafficGenerator.server hasIpv6 false
+par trafficGenerator.server hasGn false
+par trafficGenerator.server forwarding false
+par trafficGenerator.server multicastForwarding false
+par trafficGenerator.server hasUdp true
+par trafficGenerator.server hasTcp true
+par trafficGenerator.server hasSctp false
+par trafficGenerator.server numApps 1
+par trafficGenerator.Configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator\""
+par trafficGenerator.Configurator minLinkWeight 0.001
+par trafficGenerator.Configurator configureIsolatedNetworksSeparatly false
+par trafficGenerator.Configurator config "<config>...</config> at content:1"
+par trafficGenerator.Configurator assignAddresses true
+par trafficGenerator.Configurator assignUniqueAddresses true
+par trafficGenerator.Configurator assignDisjunctSubnetAddresses true
+par trafficGenerator.Configurator addStaticRoutes true
+par trafficGenerator.Configurator addDefaultRoutes true
+par trafficGenerator.Configurator addSubnetRoutes true
+par trafficGenerator.Configurator addDirectRoutes true
+par trafficGenerator.Configurator optimizeRoutes true
+par trafficGenerator.Configurator dumpTopology false
+par trafficGenerator.Configurator dumpLinks false
+par trafficGenerator.Configurator dumpAddresses false
+par trafficGenerator.Configurator dumpRoutes false
+par trafficGenerator.Configurator dumpConfig "\"\""
+par trafficGenerator typename "\"_000_helloworld.simulations.trafficGenerator\""
+

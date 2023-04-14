@@ -1,0 +1,76 @@
+version 3
+run ShortcutMac-0-20230413-21:51:58-25250
+attr configname ShortcutMac
+attr datetime 20230413-21:51:58
+attr datetimef 20230413-215158
+attr experiment ShortcutMac
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network trafficGenerator
+attr processid 25250
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config *.*.wlan[*].typename ShortcutInterface
+config *.*.wlan[*].mac.bitrate 1Mbps
+config *.*.wlan[*].mac.lengthOverhead 1b
+config *.*.wlan[*].mac.durationOverhead 10us
+config *.*.wlan[*].mac.propagationDelay "uniform(1ms, 10ms)"
+config *.*.wlan[*].mac.packetLoss 0.1
+config **.server.numApps 1
+config **.server.app[0].typename TcpSessionApp
+config **.server.app[0].connectAddress "\"server\""
+config network trafficGenerator
+config sim-time-limit 700s
+config **.client.numApps 1
+config **.client.app[0].typename TcpSessionApp
+config **.client.app[0].connectAddress "\"server\""
+config **.client.app[0].sendBytes 1Mb
+config *.client.numApps 1
+config *.client.app[*].typename PingApp
+config *.client.app[*].destAddr "\"server\""
+config *.client.app[*].printPing true
+
+vector 0 trafficGenerator.client.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 1 trafficGenerator.client.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 2 trafficGenerator.client.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 3 trafficGenerator.server.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 4 trafficGenerator.server.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 5 trafficGenerator.server.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+0	0	0	0
+1	0	0	0
+2	0	0	0
+3	0	0	0
+4	0	0	0
+5	0	0	0
+
